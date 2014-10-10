@@ -7,8 +7,10 @@
 
     <div class="container">
         <div class="row">
-            <a class="btn btn-info" href="{{ url_for('.browse', before=before) }}">Before</a>
-            <a class="btn btn-info pull-right" href="{{ url_for('.browse', after=after) }}">After</a>
+            {% if page > 1 %}
+            <a class="btn btn-info" href="{{ url_for('.browse', p=page - 1) }}">Before</a>
+            {% endif %}
+            <a class="btn btn-info pull-right" href="{{ url_for('.browse', p=page + 1) }}">After</a>
         </div>
         <div class="row">
             {% for result in results %}
