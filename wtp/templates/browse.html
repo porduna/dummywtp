@@ -1,0 +1,28 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <a class="btn btn-info" href="{{ url_for('.browse', before=before) }}">Before</a>
+            <a class="btn btn-info pull-right" href="{{ url_for('.browse', after=after) }}">After</a>
+        </div>
+        <div class="row">
+            {% for result in results %}
+                <div class="col-md-4">
+                    <h3><a target="_blank" href="{{ result['url'] }}">{{ result['title'] }}</a></h3>
+                    <p>{{ result['body'] }}</p>
+                </div>
+                {% if loop.index % 3 == 0 %}
+                    </div>
+                    <div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
